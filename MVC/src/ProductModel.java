@@ -51,7 +51,7 @@ public class ProductModel {
                 }
             }
 
-            // Reemplazar y guardar
+           
             raiz.put("productos", nuevosProductos);
 
             try (FileWriter writer = new FileWriter(filePath)) {

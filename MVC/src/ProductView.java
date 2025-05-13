@@ -22,11 +22,10 @@ public class ProductView extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // Configura tabla
         tableModel = new DefaultTableModel(new Object[]{"ID", "Nombre", "Precio", "Stock"}, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Hacemos la tabla no editable
+                return false;
             }
         };
 
@@ -38,7 +37,6 @@ public class ProductView extends JFrame {
         tabla.setGridColor(Color.LIGHT_GRAY);
         tabla.setShowVerticalLines(false);
 
-        // Alinear celdas al centro
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         for (int i = 0; i < tabla.getColumnCount(); i++) {
@@ -47,7 +45,7 @@ public class ProductView extends JFrame {
 
         add(new JScrollPane(tabla), BorderLayout.CENTER);
 
-        // Botones
+        
         btnActualizar = new JButton("Actualizar");
         btnActualizar.addActionListener(new ActionListener() {
             @Override
@@ -69,7 +67,7 @@ public class ProductView extends JFrame {
                             JOptionPane.YES_NO_OPTION);
                     if (confirm == JOptionPane.YES_OPTION) {
                         int idProducto = (int) tableModel.getValueAt(filaSeleccionada, 0);
-                        controlador.eliminarProducto(idProducto); // Método que deberías definir
+                        controlador.eliminarProducto(idProducto);
                         tableModel.removeRow(filaSeleccionada);
                     }
                 } else {
@@ -82,7 +80,7 @@ public class ProductView extends JFrame {
         btnCerrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose(); // Cierra solo esta ventana
+                dispose(); 
             }
         });
 

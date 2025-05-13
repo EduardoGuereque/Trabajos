@@ -9,13 +9,13 @@ public class ProductController {
     public ProductController() {
         modelo = new ProductModel();
         vista = new ProductView(this);
-        vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Cierra solo la ventana de productos
+        vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public void mostrarProductos() {
         List<Productos> productos = modelo.obtenerProductos();
         vista.actualizarTabla(productos);
-        vista.setVisible(true); // Mostrar la vista de productos
+        vista.setVisible(true);
     }
     
     public void eliminarProducto(int id) {

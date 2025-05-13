@@ -8,13 +8,13 @@ public class AuthController {
     private AuthView vista;
     private AuthModel modelo;
     private Registro registro;
-    private ProductController productController; // Nuevo: Controlador de productos
+    private ProductController productController; 
 
     public AuthController(AuthView vista, AuthModel modelo) {
         this.vista = vista;
         this.modelo = modelo;
         this.registro = new Registro();
-        this.productController = new ProductController(); // Inicializar el controlador de productos
+        this.productController = new ProductController();
 
         this.vista.getBtnLogin().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -24,7 +24,7 @@ public class AuthController {
                 try {
                     if (modelo.autenticar(usuario, contrasena)) {
                         vista.ocultar();
-                        productController.mostrarProductos(); // Mostrar la vista de productos
+                        productController.mostrarProductos(); 
                     } else {
                         JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos",
                                 "ERROR", JOptionPane.ERROR_MESSAGE);
