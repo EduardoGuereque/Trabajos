@@ -6,6 +6,9 @@ public class Main{
 		AuthView vista = new AuthView();
         AuthModel modelo = new AuthModel();
         new AuthController(vista, modelo);
+        
+        
+		
 
 	}
 
