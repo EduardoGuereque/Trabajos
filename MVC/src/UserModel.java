@@ -45,4 +45,58 @@ public class UserModel {
 		
 		return users;
 	}
+	
+	public boolean add(String name, String email, String role)
+	{
+		String query = "INSERT INTO `users` (`id`, `name`, `email`, `role`, `phone`, `create_at`, `update_at`) VALUES (NULL, '"+name+"', '"+email+"', '"+role+"', NULL, NULL, NULL);";
+		Connection conn = null;
+		Statement stmt = null;
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test1", "root", "");
+			stmt = conn.createStatement();
+			
+			int rs = stmt.executeUpdate(query);
+			 
+			if(rs > 0) 
+				return true; 
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (Exception e) {}
+		}
+		
+		return false;
+	}
+	
+	public void remove(int users_id) {
+		
+		String query = "DELETE FROM `users` WHERE `users`.`id` = " + users_id;
+		Connection conn = null;
+		Statement stmt = null;
+		List<Users> users = new ArrayList<>();
+		
+		try {
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test1", "root", "");
+			stmt = conn.createStatement();
+			int rs = stmt.executeUpdate(query);
+			 
+			if(rs > 0) 
+				return; 
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (Exception e) {}
+		}
+		
+	}
 }

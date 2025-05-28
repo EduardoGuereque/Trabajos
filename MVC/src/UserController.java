@@ -15,4 +15,11 @@ public class UserController {
 		view.mostrarUsuarios(lista);
 		view.setVisible(true);
 	}
+	
+	public void delete(int user_id) {
+		model.remove(user_id);
+		
+
+	}
+	
 }
